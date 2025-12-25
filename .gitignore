@@ -1,0 +1,10 @@
+// ============================================
+// FILE 11: .gitignore
+// ============================================
+node_modules
+.env.local
+.env
+dist
+.vercel
+.guide.txt
+.art.txt
