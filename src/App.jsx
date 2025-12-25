@@ -906,46 +906,48 @@ const AdminPanel = ({ categories, onAddCategory, onDeleteCategory, onAddSubCateg
   );
 };
 
-export default QuizApp;<div className="space-y-4">
-          <div>
-            <label className="block mb-2 font-semibold">Category</label>
-            <select
-              value={selectedCategory}
-              onChange={(e) => {setSelectedCategory(e.target.value); setSelectedSubCategory('');}}
-              className={`w-full p-3 rounded-lg ${theme.input} border ${theme.border} focus:outline-none focus:ring-2 focus:ring-blue-500`}
-            >
-              <option value="">Select a category</option>
-              {Object.keys(categories).map(cat => (
-                <option key={cat} value={cat}>{cat}</option>
-              ))}
-            </select>
-          </div>
+const CategorySelectContent = ({ categories, selectedCategory, setSelectedCategory, selectedSubCategory, setSelectedSubCategory, onStart, theme }) => {
+  const subCategories = selectedCategory ? Object.keys(categories[selectedCategory]) : [];
 
-          {selectedCategory && (
-            <div>
-              <label className="block mb-2 font-semibold">Sub-Category</label>
-              <select
-                value={selectedSubCategory}
-                onChange={(e) => setSelectedSubCategory(e.target.value)}
-                className={`w-full p-3 rounded-lg ${theme.input} border ${theme.border} focus:outline-none focus:ring-2 focus:ring-blue-500`}
-              >
-                <option value="">Select a sub-category</option>
-                {subCategories.map(subCat => (
-                  <option key={subCat} value={subCat}>{subCat}</option>
-                ))}
-              </select>
-            </div>
-          )}
-
-          <button
-            onClick={onStart}
-            disabled={!selectedCategory || !selectedSubCategory}
-            className={`w-full ${theme.success} text-white p-4 rounded-lg font-semibold text-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed mt-6`}
-          >
-            Start Quiz
-          </button>
-        </div>
+  return (
+    <div className="space-y-4">
+      <div>
+        <label className="block mb-2 font-semibold">Category</label>
+        <select
+          value={selectedCategory}
+          onChange={(e) => {setSelectedCategory(e.target.value); setSelectedSubCategory('');}}
+          className={`w-full p-3 rounded-lg ${theme.input} border ${theme.border} focus:outline-none focus:ring-2 focus:ring-blue-500`}
+        >
+          <option value="">Select a category</option>
+          {Object.keys(categories).map(cat => (
+            <option key={cat} value={cat}>{cat}</option>
+          ))}
+        </select>
       </div>
+
+      {selectedCategory && (
+        <div>
+          <label className="block mb-2 font-semibold">Sub-Category</label>
+          <select
+            value={selectedSubCategory}
+            onChange={(e) => setSelectedSubCategory(e.target.value)}
+            className={`w-full p-3 rounded-lg ${theme.input} border ${theme.border} focus:outline-none focus:ring-2 focus:ring-blue-500`}
+          >
+            <option value="">Select a sub-category</option>
+            {subCategories.map(subCat => (
+              <option key={subCat} value={subCat}>{subCat}</option>
+            ))}
+          </select>
+        </div>
+      )}
+
+      <button
+        onClick={onStart}
+        disabled={!selectedCategory || !selectedSubCategory}
+        className={`w-full ${theme.success} text-white p-4 rounded-lg font-semibold text-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed mt-6`}
+      >
+        Start Quiz
+      </button>
     </div>
   );
 };
@@ -1039,3 +1041,5 @@ const ResultsScreen = ({ answers, questions, user, category, subCategory, onReta
             <p className={`${theme.textSecondary} italic`}>{remarks}</p>
           </div>
         </div>
+        </div >
+        </div>)}
