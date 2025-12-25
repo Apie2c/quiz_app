@@ -1043,3 +1043,4 @@ const ResultsScreen = ({ answers, questions, user, category, subCategory, onReta
         </div>
         </div >
         </div>)}
+        export default App;
