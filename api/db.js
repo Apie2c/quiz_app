@@ -1,6 +1,3 @@
-// ============================================
-// FILE 7: api/db.js (Database Connection)
-// ============================================
 import { MongoClient } from 'mongodb';
 
 let cachedClient = null;
@@ -11,7 +8,11 @@ export async function connectToDatabase() {
     return { client: cachedClient, db: cachedDb };
   }
 
-  const client = await MongoClient.connect(process.env.MONGODB_URI);
+  const client = await MongoClient.connect(process.env.MONGODB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  });
+  
   const db = client.db('quizapp');
 
   cachedClient = client;

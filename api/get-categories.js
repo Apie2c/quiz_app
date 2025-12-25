@@ -1,6 +1,3 @@
-// ============================================
-// FILE 8: api/get-categories.js
-// ============================================
 import { connectToDatabase } from './db';
 
 export default async function handler(req, res) {
