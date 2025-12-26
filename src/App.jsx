@@ -1041,6 +1041,8 @@ const ResultsScreen = ({ answers, questions, user, category, subCategory, onReta
             <p className={`${theme.textSecondary} italic`}>{remarks}</p>
           </div>
         </div>
-        </div >
-        </div>)}
-        export default App;
+      </div >
+    </div>
+  );
+};
+export default App;
