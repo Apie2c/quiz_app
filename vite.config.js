@@ -11,5 +11,6 @@ export default defineConfig({
       }
     }
   },
-  base: '/quiz_app/'
+  base: '/',
+
 });
